@@ -1,6 +1,6 @@
 {
   "name": "react-context-example",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Context Example",
   "main": "src/ContextExample.js",
   "author": "Jed Watson",
