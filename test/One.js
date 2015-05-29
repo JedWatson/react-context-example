@@ -32,15 +32,15 @@ describe('One', function () {
 		});
 
 		it('renders nothing without context from parent at one level deep', function () {
-			assert.notEqual(content.indexOf("One ()"), -1);
+			assert.notEqual(content.indexOf('One ()'), -1);
 		});
 
 		it('renders nothing at two levels deep as no prop was passed, therefore no context', function () {
-			assert.notEqual(content.indexOf("Two (, )"), -1);
+			assert.notEqual(content.indexOf('Two (, )'), -1);
 		});
 
 		it('renders context from Two via props from One at three levels deep', function () {
-			assert.notEqual(content.indexOf("Three (Zed, )"), -1);
+			assert.notEqual(content.indexOf('Three (Zed, )'), -1);
 		});
 	});
 
@@ -55,19 +55,19 @@ describe('One', function () {
 		});
 
 		it('renders nothing without context from parent at one level deep', function () {
-			assert.notEqual(content.indexOf("One ()"), -1);
+			assert.notEqual(content.indexOf('One ()'), -1);
 		});
 
 		it('renders only prop from One via context at two levels deep', function () {
-			assert.notEqual(content.indexOf("Two (, Aye)"), -1);
+			assert.notEqual(content.indexOf('Two (, Aye)'), -1);
 		});
 
 		it('renders Prop from Two via context and prop from One via context at three levels deep', function () {
-			assert.notEqual(content.indexOf("Three (Zed, Aye)"), -1);
+			assert.notEqual(content.indexOf('Three (Zed, Aye)'), -1);
 		});
 	});
 
-	describe("with context", function () {
+	describe('with context', function () {
 		beforeEach(function () {
 			One = stubContext(One, { a: 'Aye' });
 
@@ -80,15 +80,15 @@ describe('One', function () {
 		});
 
 		it('renders context from parent at one level deep', function () {
-			assert.notEqual(content.indexOf("One (Aye)"), -1);
+			assert.notEqual(content.indexOf('One (Aye)'), -1);
 		});
 
 		it('renders context from parent and prop from One via context at two levels deep', function () {
-			assert.notEqual(content.indexOf("Two (Aye, Bee)"), -1);
+			assert.notEqual(content.indexOf('Two (Aye, Bee)'), -1);
 		});
 
 		it('renders Prop from Two via context and prop from One via context at three levels deep', function () {
-			assert.notEqual(content.indexOf("Three (Zed, Bee)"), -1);
+			assert.notEqual(content.indexOf('Three (Zed, Bee)'), -1);
 		});
 	});
 });

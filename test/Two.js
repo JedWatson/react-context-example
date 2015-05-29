@@ -32,11 +32,11 @@ describe('Two', function () {
 		});
 
 		it('renders nothing without context from parents at one level deep', function () {
-			assert.notEqual(content.indexOf("Two (, )"), -1);
+			assert.notEqual(content.indexOf('Two (, )'), -1);
 		});
 
 		it('renders nothing without context from parents at two levels deep', function () {
-			assert.notEqual(content.indexOf("Three (, )"), -1);
+			assert.notEqual(content.indexOf('Three (, )'), -1);
 		});
 	});
 
@@ -51,15 +51,15 @@ describe('Two', function () {
 		});
 
 		it('renders nothing without context from parents at one level deep', function () {
-			assert.notEqual(content.indexOf("Two (, )"), -1);
+			assert.notEqual(content.indexOf('Two (, )'), -1);
 		});
 
 		it('renders prop from Two via context at two levels deep', function () {
-			assert.notEqual(content.indexOf("Three (Zed, )"), -1);
+			assert.notEqual(content.indexOf('Three (Zed, )'), -1);
 		});
 	});
 
-	describe("with context", function () {
+	describe('with context', function () {
 		beforeEach(function () {
 			Two = stubContext(Two, { a: 'Aye', b: 'Bee' });
 
@@ -72,11 +72,11 @@ describe('Two', function () {
 		});
 
 		it('renders context from parents at one level deep', function () {
-			assert.notEqual(content.indexOf("Two (Aye, Bee)"), -1);
+			assert.notEqual(content.indexOf('Two (Aye, Bee)'), -1);
 		});
 
 		it('renders context from parents at two levels deep', function () {
-			assert.notEqual(content.indexOf("Three (Aye, Bee)"), -1);
+			assert.notEqual(content.indexOf('Three (Aye, Bee)'), -1);
 		});
 	});
 });
