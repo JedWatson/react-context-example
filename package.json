@@ -2,7 +2,7 @@
   "name": "react-context-example",
   "version": "1.0.0",
   "description": "Context Example",
-  "main": "src/ContextExample.js",
+  "main": "index.js",
   "author": "Jed Watson",
   "homepage": "https://github.com/JedWatson/react-context-example",
   "repository": {
@@ -18,10 +18,13 @@
   },
   "devDependencies": {
     "babel-eslint": "^3.1.9",
+    "babel-jest": "^5.2.0",
     "eslint": "^0.21.2",
     "eslint-plugin-react": "^2.3.0",
+    "gulp": "^3.8.11",
+    "jest-cli": "^0.4.5",
     "react-component-gulp-tasks": "^0.7.0",
-    "gulp": "^3.8.11"
+    "react-stub-context": "^0.3.0"
   },
   "browserify-shim": {
     "react": "global:React"
@@ -33,8 +36,14 @@
     "publish:site": "gulp publish:examples",
     "release": "gulp release",
     "start": "gulp dev",
-    "test": "echo \"no tests yet\" && exit 0",
+    "test": "jest",
     "watch": "gulp watch:lib"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
   },
   "readmeFilename": "README.md",
   "keywords": [
