@@ -20,7 +20,7 @@ describe('Three', function() {
     );
 
     levels = TestUtils.scryRenderedDOMComponentsWithTag(render, 'div');
-    assert(levels.length === 1);
+    assert.equal(levels.length, 1);
   });
 
   describe("without context", function() {
@@ -30,7 +30,7 @@ describe('Three', function() {
       );
 
       content = render.getDOMNode().textContent;
-      assert(content.indexOf("Three (, )") !== -1);
+      assert.notEqual(content.indexOf("Three (, )"), -1);
     });
   });
 
@@ -43,7 +43,7 @@ describe('Three', function() {
       );
 
       content = render.getDOMNode().textContent;
-      assert(content.indexOf("Three (Aye, Bee)") !== -1);
+      assert.notEqual(content.indexOf("Three (Aye, Bee)"), -1);
     });
   });
 });

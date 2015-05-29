@@ -19,21 +19,21 @@ describe('ContextExample', function() {
 
   it('renders three levels of context', function() {
     var levels = TestUtils.scryRenderedDOMComponentsWithTag(render, 'div');
-    assert(levels.length === 4);
+    assert.equal(levels.length, 4);
   });
 
   it('renders ContextExample prop via context at one level deep', function() {
     var content = render.getDOMNode().textContent;
-    assert(content.indexOf("One (Aye)") !== -1);
+    assert.notEqual(content.indexOf("One (Aye)"), -1);
   });
 
   it('renders ContentExample prop via context and One prop via context at two levels deep', function() {
     var content = render.getDOMNode().textContent;
-    assert(content.indexOf("Two (Aye, Bee)") !== -1);
+    assert.notEqual(content.indexOf("Two (Aye, Bee)"), -1);
   });
 
   it('renders Two prop via context and One prop via context at three levels deep', function() {
     var content = render.getDOMNode().textContent;
-    assert(content.indexOf("Three (Zed, Bee)") !== -1);
+    assert.notEqual(content.indexOf("Three (Zed, Bee)"), -1);
   });
 });
