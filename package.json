@@ -19,6 +19,7 @@
   "devDependencies": {
     "babel": "^5.4.7",
     "gulp": "^3.8.11",
+    "happiness": "^1.0.3",
     "jsdom": "^3.1.2",
     "mocha": "^2.2.5",
     "mocha-jsdom": "^0.4.0",
@@ -31,11 +32,12 @@
   "scripts": {
     "build": "gulp clean && NODE_ENV=production gulp build",
     "examples": "gulp dev:server",
+    "lint": "happiness",
     "publish:site": "gulp publish:examples",
     "release": "gulp release",
     "start": "gulp dev",
     "unit": "mocha --compilers js:babel/register",
-    "test": "npm run unit",
+    "test": "npm run lint && npm run unit",
     "watch": "gulp watch:lib"
   },
   "keywords": [
