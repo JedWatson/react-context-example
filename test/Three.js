@@ -9,12 +9,12 @@ var stubContext = require('react-stub-context');
 
 var Three = require('../src/Three');
 
-describe('Three', function() {
+describe('Three', function () {
 	jsdom();
 
 	var levels, content, render
 
-	it('renders one level deep', function() {
+	it('renders one level deep', function () {
 		render = TestUtils.renderIntoDocument(
 			React.createElement(Three)
 		);
@@ -23,8 +23,8 @@ describe('Three', function() {
 		assert.equal(levels.length, 1);
 	});
 
-	describe("without context", function() {
-		it('renders nothing without context from parents at one level deep', function() {
+	describe("without context", function () {
+		it('renders nothing without context from parents at one level deep', function () {
 			render = TestUtils.renderIntoDocument(
 				React.createElement(Three)
 			);
@@ -34,8 +34,8 @@ describe('Three', function() {
 		});
 	});
 
-	describe("with context", function() {
-		it('renders context from parents at one level deep', function() {
+	describe("with context", function () {
+		it('renders context from parents at one level deep', function () {
 			Three = stubContext(Three, { a: 'Aye', b: 'Bee' });
 
 			render = TestUtils.renderIntoDocument(
