@@ -18,9 +18,6 @@
   },
   "devDependencies": {
     "babel": "^5.4.7",
-    "babel-eslint": "^3.1.9",
-    "eslint": "^0.21.2",
-    "eslint-plugin-react": "^2.3.0",
     "gulp": "^3.8.11",
     "jsdom": "^3.1.2",
     "mocha": "^2.2.5",
@@ -34,7 +31,6 @@
   "scripts": {
     "build": "gulp clean && NODE_ENV=production gulp build",
     "examples": "gulp dev:server",
-    "lint": "eslint ./; true",
     "publish:site": "gulp publish:examples",
     "release": "gulp release",
     "start": "gulp dev",
