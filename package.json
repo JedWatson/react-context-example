@@ -2,7 +2,7 @@
   "name": "react-context-example",
   "version": "1.0.0",
   "description": "Context Example",
-  "main": "index.js",
+  "main": "lib/ContextExample.js",
   "author": "Jed Watson",
   "homepage": "https://github.com/JedWatson/react-context-example",
   "repository": {
