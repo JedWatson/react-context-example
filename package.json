@@ -42,7 +42,6 @@
     "test": "npm run unit",
     "watch": "gulp watch:lib"
   },
-  "readmeFilename": "README.md",
   "keywords": [
     "react",
     "context",
