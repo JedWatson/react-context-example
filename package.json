@@ -17,12 +17,14 @@
     "react": "^0.13.3"
   },
   "devDependencies": {
+    "babel": "^5.4.7",
     "babel-eslint": "^3.1.9",
-    "babel-jest": "^5.2.0",
     "eslint": "^0.21.2",
     "eslint-plugin-react": "^2.3.0",
     "gulp": "^3.8.11",
-    "jest-cli": "^0.4.5",
+    "jsdom": "^3.1.2",
+    "mocha": "^2.2.5",
+    "mocha-jsdom": "^0.4.0",
     "react-component-gulp-tasks": "^0.7.0",
     "react-stub-context": "^0.3.0"
   },
@@ -36,14 +38,9 @@
     "publish:site": "gulp publish:examples",
     "release": "gulp release",
     "start": "gulp dev",
-    "test": "jest",
+    "unit": "mocha --compilers js:babel/register",
+    "test": "npm run unit",
     "watch": "gulp watch:lib"
-  },
-  "jest": {
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react"
-    ]
   },
   "readmeFilename": "README.md",
   "keywords": [

@@ -1,21 +1,24 @@
-jest.dontMock('../Two')
-jest.dontMock('../Three')
+/* global describe, it */
+
+var assert = require('assert')
+var jsdom = require('mocha-jsdom');
+
+var React = require('react/addons');
+var TestUtils = React.addons.TestUtils;
+var stubContext = require('react-stub-context');
+
+var Two = require('../src/Two');
 
 describe('Two', function() {
-  var React, TestUtils, ContextExample, stubContext, render, content, levels;
+  jsdom();
 
-  React = require.requireActual('react/addons');
-  TestUtils = React.addons.TestUtils;
-  stubContext = require.requireActual('react-stub-context');
-  Two = require('../Two');
+  var levels, content, render
 
   it('renders two levels deep', function() {
-    render = TestUtils.renderIntoDocument(
-      React.createElement(Two)
-    );
+    render = TestUtils.renderIntoDocument(React.createElement(Two));
 
     levels = TestUtils.scryRenderedDOMComponentsWithTag(render, 'div');
-    expect(levels.length).toEqual(2);
+    assert(levels.length === 2);
   });
 
   describe("with no 'a' prop", function() {
@@ -29,11 +32,11 @@ describe('Two', function() {
     });
 
     it('renders nothing without context from parents at one level deep', function() {
-      expect(content.indexOf("Two (, )")).not.toEqual(-1);
+      assert(content.indexOf("Two (, )") !== -1);
     });
 
     it('renders nothing without context from parents at two levels deep', function() {
-      expect(content.indexOf("Three (, )")).not.toEqual(-1);
+      assert(content.indexOf("Three (, )") !== -1);
     });
   });
 
@@ -48,11 +51,11 @@ describe('Two', function() {
     });
 
     it('renders nothing without context from parents at one level deep', function() {
-      expect(content.indexOf("Two (, )")).not.toEqual(-1);
+      assert(content.indexOf("Two (, )") !== -1);
     });
 
     it('renders prop from Two via context at two levels deep', function() {
-      expect(content.indexOf("Three (Zed, )")).not.toEqual(-1);
+      assert(content.indexOf("Three (Zed, )") !== -1);
     });
   });
 
@@ -69,11 +72,11 @@ describe('Two', function() {
     });
 
     it('renders context from parents at one level deep', function() {
-      expect(content.indexOf("Two (Aye, Bee)")).not.toEqual(-1);
+      assert(content.indexOf("Two (Aye, Bee)") !== -1);
     });
 
     it('renders context from parents at two levels deep', function() {
-      expect(content.indexOf("Three (Aye, Bee)")).not.toEqual(-1);
+      assert(content.indexOf("Three (Aye, Bee)") !== -1);
     });
   });
 });

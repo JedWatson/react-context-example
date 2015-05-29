@@ -1,12 +1,18 @@
-jest.dontMock('../Three')
+/* global describe, it */
+
+var assert = require('assert')
+var jsdom = require('mocha-jsdom');
+
+var React = require('react/addons');
+var TestUtils = React.addons.TestUtils;
+var stubContext = require('react-stub-context');
+
+var Three = require('../src/Three');
 
 describe('Three', function() {
-  var React, TestUtils, ContextExample, stubContext, render, content, levels;
+  jsdom();
 
-  React = require.requireActual('react/addons');
-  TestUtils = React.addons.TestUtils;
-  stubContext = require.requireActual('react-stub-context');
-  Three = require('../Three');
+  var levels, content, render
 
   it('renders one level deep', function() {
     render = TestUtils.renderIntoDocument(
@@ -14,7 +20,7 @@ describe('Three', function() {
     );
 
     levels = TestUtils.scryRenderedDOMComponentsWithTag(render, 'div');
-    expect(levels.length).toEqual(1);
+    assert(levels.length === 1);
   });
 
   describe("without context", function() {
@@ -24,7 +30,7 @@ describe('Three', function() {
       );
 
       content = render.getDOMNode().textContent;
-      expect(content.indexOf("Three (, )")).not.toEqual(-1);
+      assert(content.indexOf("Three (, )") !== -1);
     });
   });
 
@@ -37,7 +43,7 @@ describe('Three', function() {
       );
 
       content = render.getDOMNode().textContent;
-      expect(content.indexOf("Three (Aye, Bee)")).not.toEqual(-1);
+      assert(content.indexOf("Three (Aye, Bee)") !== -1);
     });
   });
 });

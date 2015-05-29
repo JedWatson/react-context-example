@@ -1,14 +1,18 @@
-jest.dontMock('../One')
-jest.dontMock('../Two')
-jest.dontMock('../Three')
+/* global describe, it */
+
+var assert = require('assert')
+var jsdom = require('mocha-jsdom');
+
+var React = require('react/addons');
+var TestUtils = React.addons.TestUtils;
+var stubContext = require('react-stub-context');
+
+var One = require('../src/One');
 
 describe('One', function() {
-  var React, TestUtils, ContextExample, stubContext, render, content, levels;
+  jsdom();
 
-  React = require.requireActual('react/addons');
-  TestUtils = React.addons.TestUtils;
-  stubContext = require.requireActual('react-stub-context');
-  One = require('../One');
+  var levels, content, render
 
   it('renders three levels deep', function() {
     render = TestUtils.renderIntoDocument(
@@ -16,28 +20,27 @@ describe('One', function() {
     );
 
     levels = TestUtils.scryRenderedDOMComponentsWithTag(render, 'div');
-    expect(levels.length).toEqual(3);
+    assert(levels.length === 3);
   });
 
   describe("with no 'b' prop", function() {
     beforeEach(function() {
-      render = TestUtils.renderIntoDocument(
-        React.createElement(One)
-      );
+      render = TestUtils.renderIntoDocument(React.createElement(One));
+
       levels = TestUtils.scryRenderedDOMComponentsWithTag(render, 'div');
       content = render.getDOMNode().textContent;
     });
 
     it('renders nothing without context from parent at one level deep', function() {
-      expect(content.indexOf("One ()")).not.toEqual(-1);
+      assert(content.indexOf("One ()") !== -1);
     });
 
     it('renders nothing at two levels deep as no prop was passed, therefore no context', function() {
-      expect(content.indexOf("Two (, )")).not.toEqual(-1);
+      assert(content.indexOf("Two (, )") !== -1);
     });
 
     it('renders context from Two via props from One at three levels deep', function() {
-      expect(content.indexOf("Three (Zed, )")).not.toEqual(-1);
+      assert(content.indexOf("Three (Zed, )") !== -1);
     });
   });
 
@@ -52,15 +55,15 @@ describe('One', function() {
     });
 
     it('renders nothing without context from parent at one level deep', function() {
-      expect(content.indexOf("One ()")).not.toEqual(-1);
+      assert(content.indexOf("One ()") !== -1);
     });
 
     it('renders only prop from One via context at two levels deep', function() {
-      expect(content.indexOf("Two (, Aye)")).not.toEqual(-1);
+      assert(content.indexOf("Two (, Aye)") !== -1);
     });
 
     it('renders Prop from Two via context and prop from One via context at three levels deep', function() {
-      expect(content.indexOf("Three (Zed, Aye)")).not.toEqual(-1);
+      assert(content.indexOf("Three (Zed, Aye)") !== -1);
     });
   });
 
@@ -77,15 +80,15 @@ describe('One', function() {
     });
 
     it('renders context from parent at one level deep', function() {
-      expect(content.indexOf("One (Aye)")).not.toEqual(-1);
+      assert(content.indexOf("One (Aye)") !== -1);
     });
 
     it('renders context from parent and prop from One via context at two levels deep', function() {
-      expect(content.indexOf("Two (Aye, Bee)")).not.toEqual(-1);
+      assert(content.indexOf("Two (Aye, Bee)") !== -1);
     });
 
     it('renders Prop from Two via context and prop from One via context at three levels deep', function() {
-      expect(content.indexOf("Three (Zed, Bee)")).not.toEqual(-1);
+      assert(content.indexOf("Three (Zed, Bee)") !== -1);
     });
   });
 });
