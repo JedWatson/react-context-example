@@ -1,6 +1,6 @@
 /* global describe, it */
 
-var assert = require('assert')
+var assert = require('assert');
 var jsdom = require('mocha-jsdom');
 
 var React = require('react/addons');
@@ -12,7 +12,7 @@ var Three = require('../src/Three');
 describe('Three', function () {
 	jsdom();
 
-	var levels, content, render
+	var levels, content, render;
 
 	it('renders one level deep', function () {
 		render = TestUtils.renderIntoDocument(

@@ -1,6 +1,6 @@
-/* global describe, it */
+/* global describe, it, beforeEach */
 
-var assert = require('assert')
+var assert = require('assert');
 var jsdom = require('mocha-jsdom');
 
 var React = require('react/addons');
@@ -11,11 +11,11 @@ var ContextExample = require('../src/ContextExample');
 describe('ContextExample', function () {
 	jsdom();
 
-	var render
+	var render;
 
 	beforeEach(function () {
 		render = TestUtils.renderIntoDocument(React.createElement(ContextExample, { a: 'Aye' }));
-	})
+	});
 
 	it('renders three levels of context', function () {
 		var levels = TestUtils.scryRenderedDOMComponentsWithTag(render, 'div');
